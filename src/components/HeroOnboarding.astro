@@ -1,0 +1,53 @@
+---
+import Button from "../components/Button.astro";
+---
+
+<!-- DESKTOP-->
+<section class="hidden lg:block relative w-full h-[600px] overflow-hidden">
+  <!-- Background image (left side) -->
+  <img src="/hero_onboarding.webp" alt="Onboarding møde" class="absolute inset-0 w-full h-full object-cover object-center" />
+
+  <!-- White gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-l from-white via-white/90 to-transparent"></div>
+
+  <!-- Text content: right side -->
+  <div class="relative z-10 pt-24 flex items-center justify-end px-6 lg:px-36">
+    <div class="max-w-md flex flex-col gap-6">
+      <h1 class="reveal-card text-h1 text-black leading-[55px]" data-delay="50" data-direction="right">
+        Kom hurtigt i gang med <span class="text-brand">QualityLog</span>
+      </h1>
+      <p class="reveal-card text-h2 text-grey pt-8" data-delay="150" data-direction="right">Lær hvordan du bruger systemet – trin for trin. Designet til at være simpelt, så du kan komme i gang uden besvær.</p>
+      <div class="reveal-card flex items-center gap-4 pt-8" data-delay="200" data-direction="right">
+        <Button href="/om#book_demo" variant="primary" class="inline-flex"> Book demo </Button>
+        <Button href="#onboarding" variant="secondary" class="inline-flex"> Se hvordan det virker </Button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOBILE-->
+<section class="lg:hidden relative w-full overflow-hidden">
+  <div class="lg:hidden relative">
+    <!-- Content -->
+    <div class="relative z-10 px-6 pt-16">
+      <!-- Heading -->
+      <div class="leading-tight">
+        <h1 class="text-h1_mobile text-black">Kom hurtigt i gang med <span class="text-brand">QualityLog</span></h1>
+      </div>
+
+      <!-- Paragraph -->
+      <p class="mt-12 text-h2_mobile text-grey">Lær hvordan du bruger systemet – trin for trin. Designet til at være simpelt, så du kan komme i gang uden besvær.</p>
+
+      <!-- Buttons -->
+      <div class="flex items-center gap-4 mt-12">
+        <Button href="/om#book_demo" variant="primary" class="inline-flex"> Book demo </Button>
+        <Button href="#onboarding" variant="secondary" class="inline-flex"> Se hvordan det virker </Button>
+      </div>
+    </div>
+
+    <!-- Image under content -->
+    <div class="mt-10">
+      <img src="/hero_onboarding.webp" alt="" aria-hidden="true" class="w-full h-[40vh] object-cover object-center" />
+    </div>
+  </div>
+</section>

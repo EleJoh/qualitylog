@@ -1,0 +1,144 @@
+---
+const faqs = [
+  {
+    question: "Hvem kan bruge QualityLog?",
+    answer:
+      "QualityLog er udviklet til servicevirksomheder med mange medarbejdere, lokationer og tilbagevendende opgaver. Platformen bruges blandt andet inden for rengøring, facility management, vedligeholdelse og inspektion.",
+  },
+  {
+    question: "Hvad bruges QualityLog til?",
+    answer:
+      "QualityLog bruges til opgavestyring, dokumentation og kvalitetskontrol. Systemet gør det lettere at strukturere arbejdet, følge op på opgaver og skabe overblik i hverdagen.",
+  },
+  {
+    question: "Kan medarbejdere bruge QualityLog på mobilen?",
+    answer:
+      "Ja. Medarbejdere kan bruge appen direkte fra mobilen til at se opgaver, markere dem som udført og tilføje billeder eller kommentarer ved behov.",
+  },
+  {
+    question: "Kan man dokumentere arbejde med billeder og kommentarer?",
+    answer:
+      "Ja. Medarbejdere kan hurtigt tage billeder og skrive kommentarer direkte i appen. Det gør det lettere at dokumentere arbejdet og registrere problemer eller mangler.",
+  },
+  {
+    question: "Er QualityLog svært at komme i gang med?",
+    answer:
+      "Nej. Systemet er designet til at være enkelt og intuitivt, så både ledere og medarbejdere hurtigt kan lære det at kende.",
+  },
+  {
+    question: "Kan QualityLog bruges på flere lokationer?",
+    answer:
+      "Ja. QualityLog er udviklet til virksomheder, der arbejder på tværs af flere lokationer og har behov for et samlet overblik over opgaver og dokumentation.",
+  },
+  {
+    question: "Hvordan hjælper QualityLog virksomheder?",
+    answer:
+      "QualityLog hjælper virksomheder med at reducere fejl, skabe bedre struktur og forbedre dokumentationen af arbejdet. Det kan spare tid i hverdagen og skabe en mere professionel oplevelse for kunderne.",
+  },
+   {
+    question: "Kan QualityLog tilpasses forskellige brancher?",
+    answer:
+      "Ja. Platformen kan bruges i mange forskellige brancher med faste arbejdsgange og behov for dokumentation og opfølgning.",
+  },
+];
+---
+
+<section class="bg-bgWhite px-6 lg:px-16 py-16 lg:py-24">
+  <div class="max-w-screen-xl mx-auto flex flex-col gap-24">
+    <h2 class="reveal-up text-h3_mobile lg:text-h3  text-black text-center">FAQ</h2>
+
+    <div class="flex flex-col gap-3 max-w-3xl mx-auto w-full" id="faq-list">
+      {faqs.map((faq, i) => (
+        <div
+          data-faq={i}
+          data-delay={i * 80}
+          class={`faq-item reveal-card rounded-2xl border transition-colors duration-300 overflow-hidden ${
+            i === 0
+              ? "bg-white border-bgdarker"
+              : "bg-bgDarker border-transparent"
+          }`}
+        >
+          <!-- Question row -->
+          <button
+            class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left gap-4"
+            aria-expanded={i === 0 ? "true" : "false"}
+          >
+            <span class={`text-h7_mobile lg:text-h7 font-semibold transition-colors duration-300 ${i === 0 ? "text-brand" : "text-black"}`}>
+              {faq.question}
+            </span>
+            <!-- Icon: minus when open, plus when closed -->
+            <span class="flex-shrink-0 w-6 h-6 flex items-center justify-center">
+              <svg class="faq-icon transition-transform duration-300" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                {i === 0 ? (
+                  <!-- minus -->
+                  <path d="M3 8h10" stroke="#0261AA" stroke-width="1.8" stroke-linecap="round"/>
+                ) : (
+                  <!-- plus -->
+                  <>
+                    <path d="M8 3v10M3 8h10" stroke="#484E50" stroke-width="1.8" stroke-linecap="round"/>
+                  </>
+                )}
+              </svg>
+            </span>
+          </button>
+
+          <!-- Answer -->
+          <div
+            class={`faq-answer px-6 overflow-hidden transition-all duration-300 ${
+              i === 0 ? "max-h-96 pb-6" : "max-h-0"
+            }`}
+          >
+            <p class="text-p_mobile lg:text-p text-grey leading-relaxed">{faq.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const items = document.querySelectorAll(".faq-item");
+
+  items.forEach((item) => {
+    const trigger = item.querySelector(".faq-trigger") as HTMLButtonElement;
+    const answer = item.querySelector(".faq-answer") as HTMLElement;
+    const questionSpan = trigger.querySelector("span:first-child") as HTMLElement;
+    const iconSvg = trigger.querySelector(".faq-icon") as SVGElement;
+
+    trigger.addEventListener("click", () => {
+      const isOpen = trigger.getAttribute("aria-expanded") === "true";
+
+      // Close all
+      items.forEach((el) => {
+        const t = el.querySelector(".faq-trigger") as HTMLButtonElement;
+        const a = el.querySelector(".faq-answer") as HTMLElement;
+        const q = t.querySelector("span:first-child") as HTMLElement;
+        const icon = t.querySelector(".faq-icon") as SVGElement;
+
+        t.setAttribute("aria-expanded", "false");
+        a.classList.remove("max-h-96", "pb-6");
+        a.classList.add("max-h-0");
+        el.classList.remove("bg-white", "border-bgdarker");
+        el.classList.add("bg-bgDarker", "border-transparent");
+        q.classList.remove("text-brand");
+        q.classList.add("text-black");
+        // Set to plus
+        icon.innerHTML = `<path d="M8 3v10M3 8h10" stroke="#484E50" stroke-width="1.8" stroke-linecap="round"/>`;
+      });
+
+      // Open clicked if it was closed
+      if (!isOpen) {
+        trigger.setAttribute("aria-expanded", "true");
+        answer.classList.remove("max-h-0");
+        answer.classList.add("max-h-96", "pb-6");
+        item.classList.remove("bg-bgDarker", "border-transparent");
+        item.classList.add("bg-white", "border-bgdarker");
+        questionSpan.classList.remove("text-black");
+        questionSpan.classList.add("text-brand");
+        // Set to minus
+        iconSvg.innerHTML = `<path d="M3 8h10" stroke="#0261AA" stroke-width="1.8" stroke-linecap="round"/>`;
+      }
+    });
+  });
+</script>
+

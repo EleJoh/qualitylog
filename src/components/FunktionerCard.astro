@@ -1,0 +1,37 @@
+---
+interface Feature {
+  icon: string;
+  text: string;
+}
+
+interface Props {
+  id: string;
+  label: string;
+  title: string;
+  description: string;
+  features: Feature[];
+}
+
+const { id, label, title, description, features } = Astro.props;
+---
+
+<div id={id} class="reveal-card bg-white rounded-2xl p-6 lg:p-16 grid grid-cols-1 lg:grid-cols-2 gap-8 shadow-sm border border-graphic/20" data-delay="70">
+  <!-- Left: label + title + description -->
+  <div class="flex flex-col gap-4 lg:gap-8">
+    <p class="text-h4timeline_mobile lg:text-h4timeline font-bold text-brand uppercase">{label}</p>
+    <h3 class="text-h4citat_mobile lg:text-h4citat text-black">{title}</h3>
+    <p class="text-p_mobile lg:text-p text-grey">{description}</p>
+  </div>
+
+  <!-- Right: feature list -->
+  <div class="flex flex-col gap-8 lg:gap-16 lg:ml-32 lg:pl-16 lg:border-l border-graphic/40">
+    {
+      features.map((f) => (
+        <div class="flex items-start gap-3">
+          <div class="flex-shrink-0 mt-0.5" set:html={f.icon} />
+          <p class="text-p_mobile lg:text-p text-black">{f.text}</p>
+        </div>
+      ))
+    }
+  </div>
+</div>

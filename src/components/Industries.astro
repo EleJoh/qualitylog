@@ -1,0 +1,63 @@
+---
+const checks = ["Du har mange medarbejdere og lokationer", "Du arbejder med tilbagevendende opgaver i forskellige miljøer", "Du har behov for dokumentation og sporbarhed"];
+
+const industries = [
+  { src: "/industry_1.webp", alt: "Facility management" },
+  { src: "/industry_2.webp", alt: "Logistik og lager" },
+  { src: "/industry_3.webp", alt: "Sikkerhed og inspektion" },
+  { src: "/industry_4.webp", alt: "Vedligeholdelse" },
+];
+---
+
+<section class="bg-bgWhite px-6 lg:px-16 py-8">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="bg-bgDarker rounded-3xl p-8 lg:p-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+      <!-- Left -->
+      <div class="reveal-card flex flex-col gap-6">
+        <h2 class="text-h4bold_mobile lg:text-h4bold text-black">
+          Har din virksomhed <br />brug for <span class="text-brand">QualityLog</span>?
+        </h2>
+        <p class="text-p_mobile lg:text-p text-grey">Hvis du kan svare ja til følgende, er vores platform udviklet til netop dine behov:</p>
+        <img src="/grafik_big.webp" alt="Netværk illustration" class="w-full max-w-xs" />
+      </div>
+
+      <!-- Right -->
+      <div class="reveal-card data-delay={i * 70} bg-white rounded-2xl p-6 flex flex-col gap-4" data-direction="right">
+        {
+          checks.map((c) => (
+            <div class="flex items-start gap-3">
+              <div class="flex-shrink-0 w-5 h-5 rounded-full bg-brand flex items-center justify-center mt-0.5">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5l2 2 4-4" stroke="#FEFEFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <p class="text-p_mobile lg:text-p text-black">{c}</p>
+            </div>
+          ))
+        }
+        <div class="mt-4 pt-4 border-t border-graphic">
+          <p class="text-p_mobile lg:text-p text-grey">…så kan QualityLog skabe bedre overblik og gøre hverdagen lettere.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Industries -->
+<section class="bg-bgWhite px-6 lg:px-16 py-16 lg:py-24">
+  <div class="max-w-screen-xl mx-auto flex flex-col gap-10">
+    <div class="reveal-up text-center flex flex-col gap-3">
+      <h2 class="text-h3_mobile lg:text-h3 text-black mb-4">Velegnet til mange brancher</h2>
+      <p class="text-h6_mobile lg:text-h6 text-grey mb-4">Fra rengøring og facility management til vedligeholdelse, logistik og sikkerhed.</p>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      {
+        industries.map((img, i) => (
+          <div class="reveal-card rounded-2xl overflow-hidden aspect-square" data-direction="right" data-delay={i * 70}>
+            <img src={img.src} alt={img.alt} class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

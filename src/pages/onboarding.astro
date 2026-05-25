@@ -1,0 +1,22 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import HeroOnboarding from "../components/HeroOnboarding.astro";
+import OnboardingVideo from "../components/OnboardingVideo.astro";
+import HowItWorksOnboarding from "../components/HowItWorksOnboarding.astro";
+import FAQ from "../components/FAQ.astro";
+import RoleCards from "../components/RoleCards.astro";
+import CtaBanner from "../components/CtaBanner.astro";
+---
+
+<MainLayout title="QualityLog – Appbaseret kvalitetskontrol" description="Digital kvalitetskontrol til servicevirksomheder. Dokumentér fejl, udfør inspektioner og skab overblik direkte fra mobilen.">
+  <Navbar />
+  <main>
+    <HeroOnboarding />
+    <OnboardingVideo />
+    <HowItWorksOnboarding />
+    <RoleCards />
+    <FAQ />
+    <CtaBanner />
+  </main>
+</MainLayout>

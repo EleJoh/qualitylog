@@ -1,0 +1,176 @@
+---
+import Button from "../components/Button.astro";
+
+const navLinks = [
+  { href: "/funktioner", label: "Funktioner" },
+  { href: "/onboarding", label: "Onboarding" },
+  { href: "/om", label: "Om QualityLog" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="w-full bg-white border-b border-graphic px-6 lg:px-16 py-4 flex items-center justify-between sticky top-0 z-50">
+  <!-- Logo -->
+
+  <a href="/" class="group flex items-center gap-2 flex-shrink-0">
+    <div class="w-10 h-10 transition-transform duration-300 group-hover:-translate-y-1">
+      <img src="logo_new_blue.png" alt="logo" class="w-full h-full" />
+    </div>
+
+    <span class="text-logo_mobile font-bold lg:text-logo lg:font-bold transition-transform duration-300 group-hover:translate-y-1">
+      Quality<span class="text-brand text-logo_mobile font-bold lg:text-logo lg:font-bold">Log</span>
+    </span>
+  </a>
+
+  <!-- Desktop nav links -->
+  <ul class="hidden md:flex items-center gap-8">
+    {
+      navLinks.map((link) => {
+        const isActive = currentPath === link.href || currentPath.startsWith(link.href + "/");
+        return (
+          <li>
+            <a
+              href={link.href}
+              class={`nav-link relative inline-block text-menu font-medium pb-2
+                    transition-colors duration-300 ease-in-out
+                    ${isActive ? "text-brand" : "text-black"}`}
+            >
+              {link.label}
+              <span class="nav-line absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-brand rounded-full" style={`width:${isActive ? "50%" : "0%"}; transition: width 350ms cubic-bezier(0.4,0,0.2,1);`} />
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+
+  <!-- Right side: buttons + burger -->
+  <div class="flex items-center gap-3">
+    <Button href="/om#book_demo" variant="primary" class="hidden md:inline-flex"> Book demo </Button>
+    <Button href="/om#book_demo" variant="secondary" class="hidden md:inline-flex"> Kontakt os </Button>
+
+    <!-- Burger button -->
+    <button id="burger-btn" class="md:hidden p-2 rounded-lg hover:bg-bgWhite transition-colors" aria-label="Åbn menu" aria-expanded="false">
+      <svg id="icon-open" width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <path d="M3 6h16M3 11h16M3 16h16" stroke="#0261AA" stroke-width="2" stroke-linecap="round"></path>
+      </svg>
+      <svg id="icon-close" width="22" height="22" viewBox="0 0 22 22" fill="none" class="hidden">
+        <path d="M4 4l14 14M18 4L4 18" stroke="#2F3334" stroke-width="2" stroke-linecap="round"></path>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile drawer -->
+<div
+  id="mobile-menu"
+  aria-hidden="true"
+  class="md:hidden fixed top-[61px] left-0 right-0 z-40 bg-white border-b border-graphic shadow-lg px-6 py-6 flex flex-col gap-6
+         -translate-y-2 opacity-0 pointer-events-none transition-all duration-300 ease-in-out"
+>
+  <!-- Links -->
+  <ul class="flex flex-col">
+    {
+      navLinks.map((link) => {
+        const isActive = currentPath === link.href || currentPath.startsWith(link.href + "/");
+        return (
+          <li>
+            <a href={link.href} class={`mobile-link block text-menu py-3 px-2 rounded-xl transition-colors duration-200 ${isActive ? "text-brand font-semibold bg-bgWhite" : "text-black hover:text-brand hover:bg-bgWhite"}`}>
+              {link.label}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+
+  <!-- Mobile CTAs -->
+  <div class="flex items-center gap-4 mt-4 lg:mt-8">
+    <Button href="/om#book_demo" variant="primary" class="inline-flex"> Book demo </Button>
+    <Button href="/onboarding#onboarding" variant="secondary" class="inline-flex"> Se hvordan det virker </Button>
+  </div>
+</div>
+
+<style>
+  .nav-link {
+    transition:
+      color 300ms ease,
+      transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center bottom;
+  }
+</style>
+
+<script>
+  const btn = document.getElementById("burger-btn")!;
+  const menu = document.getElementById("mobile-menu")!;
+  const iOpen = document.getElementById("icon-open")!;
+  const iClose = document.getElementById("icon-close")!;
+
+  let open = false;
+
+  function show() {
+    open = true;
+    menu.classList.remove("-translate-y-2", "opacity-0", "pointer-events-none");
+    menu.classList.add("translate-y-0", "opacity-100");
+    menu.setAttribute("aria-hidden", "false");
+    btn.setAttribute("aria-expanded", "true");
+    iOpen.classList.add("hidden");
+    iClose.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+  }
+
+  function hide() {
+    open = false;
+    menu.classList.add("-translate-y-2", "opacity-0", "pointer-events-none");
+    menu.classList.remove("translate-y-0", "opacity-100");
+    menu.setAttribute("aria-hidden", "true");
+    btn.setAttribute("aria-expanded", "false");
+    iOpen.classList.remove("hidden");
+    iClose.classList.add("hidden");
+    document.body.style.overflow = "";
+  }
+
+  // Toggle burger
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    open ? hide() : show();
+  });
+
+  // Close on any mobile link click
+  document.querySelectorAll(".mobile-link").forEach((el) => el.addEventListener("click", hide));
+
+  // Close on outside click
+  document.addEventListener("click", (e) => {
+    if (open && !menu.contains(e.target as Node) && !btn.contains(e.target as Node)) {
+      hide();
+    }
+  });
+
+  // Close when resizing to desktop
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 768 && open) hide();
+  });
+
+  // ── Desktop hover ──
+  document.querySelectorAll<HTMLAnchorElement>(".nav-link").forEach((link) => {
+    const line = link.querySelector<HTMLElement>(".nav-line");
+    const isActive = link.style.color === "" && link.classList.contains("text-brand");
+
+    // Check active by whether the line already has width
+    const startsActive = line?.style.width === "50%";
+
+    link.addEventListener("mouseenter", () => {
+      link.style.color = "#0261AA";
+      link.style.transform = "scale(1.04)";
+      if (line) line.style.width = "0%";
+    });
+    link.addEventListener("mouseleave", () => {
+      if (!startsActive) {
+        link.style.color = "";
+        link.style.transform = "scale(1)";
+        if (line) line.style.width = "0%";
+      }
+    });
+  });
+</script>

@@ -1,0 +1,63 @@
+---
+const steps = [
+  {
+    title: "OPRET OPGAVER OG LOKATIONER",
+    description: `Strukturer arbejdet ved at oprette kunder, lokationer, arbejdsområder og tilføj opgaver  i admin panelet.
+Det sikrer, at alle ved præcis, hvad der skal udføres.`,
+  },
+  {
+    title: "UDFØR OG DOKUMENTER ARBEJDET I APPEN.",
+    description: "Medarbejdere markerer opgaver som udført og tilføjer billeder ved behov. Og er der fejl eller mangler? Så kan opgaven bliver afvist eller markeret som en fejl. Nemt. ",
+  },
+  {
+    title: "FØLG OP OG FÅ OVERBLIK",
+    description: "Se status på opgaver i realtid og få adgang til dokumentation og historik samlet et sted. Det gør det lettere at følge op og sikre kvaliteten af arbejdet.",
+  },
+];
+---
+
+<section id="onboarding" class="bg-white px-6 lg:px-16 py-16 lg:py-24">
+  <div class="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+    <!-- Left -->
+    <div class="reveal-card flex flex-col gap-6">
+      <p class="text-p font-semibold text-brand uppercase">Alt hvad du behøver</p>
+      <h2 class="text-h4bold_mobile lg:text-h4bold text-black">Sådan fungerer QualityLog</h2>
+
+      <!-- Active tab card -->
+      <div class="bg-bgDarker rounded-2xl p-6 flex flex-col gap-3">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-brand inline-block"></span>
+          <p class="text-h5 lg:text-h5 font-semibold text-black">Alt samlet et sted</p>
+        </div>
+        <p class="text-p_mobile lg:text-p text-grey">
+          Fra planlægning til rapportering – alle trin er dokumenteret og tilgængelige i realtid.<br />
+          Det giver dig et klart overblik og bedre kontrol over driften.
+        </p>
+      </div>
+
+      <!-- Illustration placeholder -->
+      <div class="mt-4">
+        <img src="/grafik_timeline.webp" alt="Lokation illustration" class="w-full max-w-xs" />
+      </div>
+    </div>
+
+    <!-- Right: Steps -->
+    <div class="flex flex-col gap-12 lg:gap-24 pt-4 lg:pt-16">
+      {
+        steps.map((step, i) => (
+          <div class="flex items-start gap-5">
+            <div class="reveal-card flex-shrink-0 w-9 h-9 rounded-full bg-brand flex items-center justify-center" data-direction="right" data-delay={i * 140}>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="#FEFEFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <div class="reveal-card flex flex-col gap-1 border-b border-graphic pb-8 w-full last:border-0" data-direction="right" data-delay={i * 140}>
+              <p class="text-h5timeline_mobile lg:text-h5timeline font-bold text-black">{step.title}</p>
+              <p class="text-p_mobile lg:text-p text-grey">{step.description}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

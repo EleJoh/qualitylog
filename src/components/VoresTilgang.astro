@@ -1,0 +1,36 @@
+---
+const values = [
+  {
+    icon: `<svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="10" height="10" rx="2" stroke="#0261AA" stroke-width="1.6"/><rect x="18" y="4" width="10" height="10" rx="2" stroke="#0261AA" stroke-width="1.6"/><rect x="4" y="18" width="10" height="10" rx="2" stroke="#0261AA" stroke-width="1.6"/><rect x="18" y="18" width="10" height="10" rx="2" stroke="#1F4569" stroke-width="1.6"/></svg>`,
+    title: "Simpelt",
+    description: "Vi fokuserer på det vigtigste – uden unødvendige funktioner.",
+  },
+  {
+    icon: `<svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="8" r="4" stroke="#0261AA" stroke-width="1.6"/><path d="M16 12v12" stroke="#0261AA" stroke-width="1.6" stroke-linecap="round"/><path d="M10 28h12" stroke="#0261AA" stroke-width="1.6" stroke-linecap="round"/><path d="M10 20l6 4 6-4" stroke="#0261AA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    title: "Praktisk",
+    description: "Systemet er designet til at fungere i en travl hverdag.",
+  },
+  {
+    icon: `<svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 27s-11-6.5-11-14a7 7 0 0111-5.74A7 7 0 0127 13c0 7.5-11 14-11 14z" stroke="#0261AA" stroke-width="1.6" stroke-linejoin="round"/></svg>`,
+    title: "Brugervenligt",
+    description: "Let at forstå og hurtigt at komme i gang med.",
+  },
+];
+---
+
+<section class="bg-white px-6 lg:px-16 py-16 lg:py-24">
+  <div class="max-w-screen-xl mx-auto flex flex-col gap-24">
+    <h2 class="reveal-up text-h3_mobile lg:text-h3 text-black text-center">Vores tilgang</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-10">
+      {
+        values.map((v, i) => (
+          <div class="reveal-card flex flex-col items-center gap-4 text-center" data-delay={i * 240}>
+            <div set:html={v.icon} />
+            <p class="lg:text-h6 text-h5_mobile  text-black">{v.title}</p>
+            <p class="lg:text-p text-p_mobile text-grey max-w-[240px]">{v.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

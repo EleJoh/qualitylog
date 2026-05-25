@@ -1,0 +1,41 @@
+---
+const features = [
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#0261AA" stroke-width="1.5"/><path d="M8 12l3 3 5-5" stroke="#0261AA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    title: "Klar opgavestyring",
+    description: "Få fuld struktur over lokationer, områder og opgaver – samlet et sted.",
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="3" width="16" height="18" rx="2" stroke="#0261AA" stroke-width="1.5"/><path d="M8 8h8M8 12h8M8 16h5" stroke="#0261AA" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+    title: "Dokumentation af kvalitet",
+    description: "Tilføj billeder, noter og status, så arbejdet altid er dokumenteret.",
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" stroke="#0261AA" stroke-width="1.5" stroke-linejoin="round"/></svg>`,
+    title: "Effektiv kommunikation",
+    description: "Del opgaver og kommentarer direkte – uden mails og papir.",
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#0261AA" stroke-width="1.5"/><path d="M12 7v5l3 3" stroke="#0261AA" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+    title: "Overblik og historik",
+    description: "Få adgang til rapporter og historik, så du kan følge arbejdet over tid.",
+  },
+];
+---
+
+<section id="funktioner" class="bg-bgWhite px-6 lg:px-16 py-16 lg:py-24">
+  <div class="max-w-screen-xl mx-auto">
+    <h2 class="reveal-up text-h3_mobile lg:text-h3 text-black text-center mb-12">Digitalt overblik over opgaver og kvalitet</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {
+        features.map((f, i) => (
+          <div class="reveal-card bg-white rounded-2xl p-6 flex flex-col gap-4 shadow-sm border border-graphic/30" data-delay={i * 140}>
+            <div set:html={f.icon} />
+            <h3 class="text-h5_mobile lg:text-h5 text-black">{f.title}</h3>
+            <p class="text-p_mobile lg:text-p text-grey">{f.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,94 @@
+---
+
+---
+
+<section id="book_demo" class="reveal-up bg-bgWhite px-6 lg:px-16 py-16 lg:py-36">
+  <div class="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+    <!-- Left: text -->
+    <div class="flex flex-col gap-4">
+      <p class="text-h5timeline_mobile lg:text-h5timeline text-brand uppercase">Kontakt os eller book demo</p>
+
+      <p class="text-h4bold_mobile lg:text-h4bold text-black leading-tight">Vil du gerne høre mere?</p>
+      <p class="text-p_mobile lg:text-p text-grey leading-relaxed max-w-lg">
+        Kom i kontakt med vores team af specialister og oplev, hvordan QualityLog kan styrke jeres operationelle kvalitet og overblik.<br />
+        Vi står klar til at besvare jeres spørgsmål.
+      </p>
+    </div>
+
+    <!-- Right: form -->
+    <div class="flex flex-col gap-5">
+      <!-- Row 1: Fornavn + Efternavn -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="flex flex-col gap-2">
+          <label for="fornavn" class="text-p_mobile lg:text-p font-semibold text-black">Fornavn</label>
+          <input
+            id="fornavn"
+            type="text"
+            placeholder="Indtast fornavn"
+            class="w-full bg-bgDarker border border-graphic/40 rounded-xl px-4 py-3 text-p_mobile lg:text-p text-black placeholder:text-grey/40 focus:outline-none focus:border-brand transition-colors"
+          />
+        </div>
+        <div class="flex flex-col gap-2">
+          <label for="efternavn" class="text-p_mobile lg:text-p font-semibold text-black">Efternavn</label>
+          <input
+            id="efternavn"
+            type="text"
+            placeholder="Indtast efternavn"
+            class="w-full bg-bgDarker border border-graphic/40 rounded-xl px-4 py-3 text-p_mobile lg:text-p text-black placeholder:text-grey/40 focus:outline-none focus:border-brand transition-colors"
+          />
+        </div>
+      </div>
+
+      <!-- Row 2: E-mail + Telefonnummer -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="flex flex-col gap-2">
+          <label for="email" class="text-p_mobile lg:text-p font-semibold text-black">E-mail</label>
+          <input
+            id="email"
+            type="email"
+            placeholder="din.email@virksomhed.dk"
+            class="w-full bg-bgDarker border border-graphic/40 rounded-xl px-4 py-3 text-p_mobile lg:text-p text-black placeholder:text-grey/40 focus:outline-none focus:border-brand transition-colors"
+          />
+        </div>
+        <div class="flex flex-col gap-2">
+          <label for="telefon" class="text-p_mobile lg:text-p font-semibold text-black">Telefonnummer</label>
+          <input
+            id="telefon"
+            type="tel"
+            placeholder="+45 00 00 00 00"
+            class="w-full bg-bgDarker border border-graphic/40 rounded-xl px-4 py-3 text-p_mobile lg:text-p text-black placeholder:text-grey/40 focus:outline-none focus:border-brand transition-colors"
+          />
+        </div>
+      </div>
+      <!-- Row 2: E-mail + Telefonnummer -->
+      <div class="grid grid-cols-1 sm:grid-cols-1 gap-4">
+        <div class="flex flex-col gap-2">
+          <label for="email" class="text-p_mobile lg:text-p font-semibold text-black">Din besked</label>
+          <input
+            id="email"
+            type="email"
+            placeholder="Anmod om en demo eller skriv hvordan vi kan hjælpe dig"
+            class="w-full bg-bgDarker border border-graphic/40 rounded-xl px-4 py-3 text-p_mobile lg:text-p text-black placeholder:text-grey/40 focus:outline-none focus:border-brand transition-colors"
+          />
+        </div>
+      </div>
+
+      <!-- Checkbox -->
+      <label class="flex items-start gap-3 cursor-pointer group pt-8">
+        <input type="checkbox" class="mt-0.5 w-4 h-4 flex-shrink-0 accent-brand cursor-pointer" />
+        <span class="text-ps_mobile lg:text-ps text-grey"> Ja tak, jeg vil gerne modtage nyheder, tips og invitationer til events fra QualityLog via e-mail. </span>
+      </label>
+
+      <!-- Submit button -->
+      <div class="pt-4">
+        <button type="submit" class="text-menu_mobile lg:text-menu font-semibold bg-brand text-white px-8 py-3 rounded-full hover:bg-icons transition-colors"> Række ud </button>
+      </div>
+
+      <!-- Privacy policy -->
+      <p class="text-ps_mobile lg:text-ps text-grey">
+        By submitting, you agree to our{" "}
+        <a href="/privacy" class="text-brand hover:underline">Privacy Policy</a>.
+      </p>
+    </div>
+  </div>
+</section>

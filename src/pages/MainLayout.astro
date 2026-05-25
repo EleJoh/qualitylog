@@ -1,0 +1,88 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+}
+
+const { title = "QualityLog", description = "Digital kvalitetskontrol til servicevirksomheder. Dokumentér fejl, udfør inspektioner og skab overblik direkte fra mobilen.", image = "/og-image.png", canonical } = Astro.props;
+
+import ScrollReveal from "../components/ScrollReveal.astro";
+
+const siteUrl = "https://www.qualitylog.dk"; // ← update to your real domain
+const pageUrl = canonical ?? siteUrl + Astro.url.pathname;
+const ogImage = image.startsWith("http") ? image : siteUrl + image;
+const fullTitle = title.includes("QualityLog") ? title : `${title} | QualityLog`;
+---
+
+<!doctype html>
+<html lang="da">
+  <head>
+    <!-- Charset & viewport -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary SEO -->
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={pageUrl} />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Pentia" />
+    <meta name="theme-color" content="#0261AA" />
+
+    <!-- Open Graph — controls how the link looks when shared on LinkedIn, Facebook etc. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="QualityLog – appbaseret kvalitetskontrol" />
+    <meta property="og:locale" content="da_DK" />
+    <meta property="og:site_name" content="QualityLog" />
+
+    <!-- Twitter / X card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Favicon — put these files in /public/ -->
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- JSON-LD structured data — helps Google understand what QualityLog is -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        name: "QualityLog",
+        url: siteUrl,
+        description: description,
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "iOS, Android, Web",
+        inLanguage: ["da", "en"],
+        publisher: {
+          "@type": "Organization",
+          name: "Pentia",
+          url: "https://pentia.dk",
+        },
+      })}
+    />
+  </head>
+
+  <body class="font-sans bg-white text-black antialiased">
+    <slot />
+    <ScrollReveal />
+  </body>
+</html>

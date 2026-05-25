@@ -1,0 +1,55 @@
+---
+import Button from "../components/Button.astro";
+---
+
+<!-- DESKTOP-->
+<section class="hidden lg:block relative w-full h-[600px] overflow-hidden">
+  <!-- Background image (left side) -->
+  <img src="/om_1.webp" alt="Onboarding møde" class="absolute inset-0 w-full h-full object-cover object-center" />
+
+  <!-- White gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-l from-white via-white/90 to-transparent"></div>
+
+  <!-- Text content: right side -->
+  <div class="relative z-10 pt-24 flex items-center justify-end px-6 lg:px-36">
+    <div class="max-w-lg flex flex-col">
+      <h1 class="reveal-card text-h1 text-black leading-[55px]" data-delay="50" data-direction="right">QualityLog:</h1>
+      <h1 class="reveal-card text-h1 text-black leading-[55px]" data-delay="50" data-direction="right">
+        Enkelt. Struktureret. <span class="text-brand">Effektivt</span>
+      </h1>
+      <p class="reveal-card text-h2 text-grey pt-8" data-delay="100" data-direction="right">Hvorfor vi skabte QualityLog</p>
+      <p class="reveal-card text-p text-grey pt-8 max-w-100" data-delay="200" data-direction="right">
+        Mange servicevirksomheder arbejder stadig med manuelle processer, mails og uoverskuelige systemer. Det skaber manglende overblik, fejl og unødvendige misforståelser i hverdagen.
+      </p>
+      <p class="reveal-card text-p text-grey pt-4 max-w-100" data-delay="200" data-direction="right">
+        Derfor har vi udviklet QualityLog – en enkel løsning, der gør det nemmere at strukturere opgaver, dokumentere arbejdet og skabe klarhed på tværs af medarbejdere og lokationer.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- MOBILE: text first, image under it -->
+<section class="lg:hidden relative w-full overflow-hidden">
+  <div class="lg:hidden relative">
+    <!-- Content -->
+    <div class="relative z-10 px-6 pt-16">
+      <!-- Heading -->
+      <div class="leading-tight">
+        <h1 class="text-h1_mobile text-black leading-[55px]">QualityLog:</h1>
+        <h1 class="text-h1_mobile text-black leading-[55px]">
+          Enkelt. Struktureret. <span class="text-brand">Effektivt</span>
+        </h1>
+      </div>
+
+      <!-- Paragraph -->
+      <p class="text-h2 text-grey pt-8">Hvorfor vi skabte QualityLog</p>
+      <p class="text-p text-grey pt-8 max-w-100">Mange servicevirksomheder arbejder stadig med manuelle processer, mails og uoverskuelige systemer. Det skaber manglende overblik, fejl og unødvendige misforståelser i hverdagen.</p>
+      <p class="text-p text-grey pt-4 max-w-100">Derfor har vi udviklet QualityLog – en enkel løsning, der gør det nemmere at strukturere opgaver, dokumentere arbejdet og skabe klarhed på tværs af medarbejdere og lokationer.</p>
+    </div>
+
+    <!-- Image under content -->
+    <div class="mt-10">
+      <img src="/om.webp" alt="" aria-hidden="true" class="w-full h-[40vh] object-cover object-center" />
+    </div>
+  </div>
+</section>

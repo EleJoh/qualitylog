@@ -1,0 +1,33 @@
+---
+import Button from "../components/Button.astro";
+---
+
+<section class="relative bg-white px-6 lg:px-16 py-16 lg:py-24 overflow-hidden">
+  <!-- Desktop image: absolute, visible only on web-->
+  <div class="hidden lg:block lg:absolute lg:inset-y-0 lg:right-0 lg:z-0 w-full lg:w-[50%] lg:h-full pointer-events-none">
+    <img src="/hero_forside.webp" alt="" aria-hidden="true" class="w-full h-full object-cover object-right" />
+  </div>
+
+  <!-- subtle gradient only on web -->
+  <div class="hidden lg:block lg:absolute lg:inset-0 lg:z-10 pointer-events-none bg-gradient-to-r from-white to-transparent lg:from-white/100 lg:via-white/100 lg:to-transparent"></div>
+
+  <div class="relative z-20 max-w-screen-xl mx-auto flex flex-col lg:flex-row items-start lg:items-center min-h-[50vh]">
+    <!-- Text content -->
+    <div class="flex flex-col gap-6 w-[90%] lg:w-[50%]">
+      <h1 class="reveal-card text-h1_mobile lg:text-h1 text-black" data-delay="50">
+        Få styr på opgaver, dokumentation og kommunikation med
+        <span class="text-brand"> appbaseret kvalitetskontrol.</span>
+      </h1>
+      <p class="reveal-card text-h2_mobile lg:text-h2 text-grey max-w-[85%] mt-4" data-delay="150">En simpel digital løsning til servicevirksomheder, der vil skabe struktur, få bedre overblik og spar tid til hverdagen.</p>
+      <div class="reveal-card flex items-center gap-4 mt-4 lg:mt-8" data-delay="200">
+        <Button href="/om#book_demo" variant="primary" class="inline-flex"> Book demo </Button>
+        <Button href="/onboarding#onboarding" variant="secondary" class="inline-flex"> Se hvordan det virker </Button>
+      </div>
+    </div>
+
+    <!-- Mobile image -->
+    <div class="mt-8 w-full block lg:hidden">
+      <img src="/hero_forside.webp" alt="Produktvisning på mobil" class="w-full h-auto object-cover" />
+    </div>
+  </div>
+</section>

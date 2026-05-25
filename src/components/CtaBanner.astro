@@ -1,0 +1,34 @@
+---
+import Button from "../components/Button.astro";
+---
+
+<!-- CTA Banner -->
+<section id="book-demo" class="px-6 lg:px-16 py-8 pb-16">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="bg-bgDarker rounded-3xl p-8 lg:p-12 grid grid-cols-1 lg:grid-cols-4 gap-0 items-start lg:min-h-[220px]">
+      <!-- Left: text  -->
+      <div class="reveal-card flex flex-col gap-6 lg:col-span-2">
+        <h2 class="text-h4bold_mobile lg:text-h4bold font-bold text-black">
+          Gør din hvedrag mere<br />
+          <span class="text-brand">effektiv og struktureret</span>
+        </h2>
+
+        <p class="text-pStor text-grey max-w-sm pt-4">Vi står klar til at hjælpe dig i gang og vise hvordan QualityLog fungerer i praksis.</p>
+
+        <div class="flex items-center gap-4 pt-4 lg:gap-8 lg:pt-8 pb-8">
+          <Button href="/om#book_demo" variant="primary" class="inline-flex"> Kontakt os </Button>
+          <Button href="/om#book_demo" variant="secondary" class="inline-flex"> Book demo </Button>
+        </div>
+      </div>
+
+      <!-- Right: image  -->
+      <div class="reveal-card relative flex justify-center lg:justify-end items-end lg:col-span-1">
+        <img src="/kontakt_person_1.webp" alt="QualityLog konsulent" class="rounded-2xl object-cover aspect-[4/4] lg:-ml-2" />
+      </div>
+      <!-- Middle: graphic -->
+      <div class="reveal-card flex justify-end items-start lg:col-span-1 pt-8 lg:pt-0 lg:h-full lg:pb-4">
+        <img src="/grafik_location.webp" alt="" class="w-40 lg:w-64" />
+      </div>
+    </div>
+  </div>
+</section>

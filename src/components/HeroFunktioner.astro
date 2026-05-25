@@ -1,0 +1,62 @@
+---
+import Button from "../components/Button.astro";
+---
+
+<section class="relative bg-bgdark overflow-hidden">
+  <!-- DESKTOP VERSION -->
+  <div class="hidden lg:block relative min-h-[75vh]">
+    <!-- Background image -->
+    <div class="absolute inset-0 z-0">
+      <img src="/hero_funktioner.webp" alt="" aria-hidden="true" class="w-full h-[75vh] object-cover object-center" />
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 flex justify-center">
+      <div class="w-full max-w-xl pl-16 pt-24
+               lg:max-w-4xl ml-96">
+        <!-- Heading -->
+        <div class="reveal-card leading-tight" data-delay="50" data-direction="right">
+          <h1 class="text-h1 text-brand"><span class="text-black">Funktioner der </span>skaber overblik</h1>
+
+          <h1 class="text-h1 text-black mt-2 whitespace-nowrap">i hverdagen</h1>
+        </div>
+
+        <!-- Paragraph -->
+        <p class="reveal-card mt-12 text-h2 text-grey max-w-xl" data-delay="150" data-direction="right">QualityLog samler opgavestyring, dokumentation og kommunikation i én enkel løsning – så du kan arbejde mere struktureret og undgå fejl.</p>
+
+        <!-- Buttons -->
+        <div class="reveal-card flex items-center gap-4 mt-12" data-delay="200" data-direction="right">
+          <Button href="/om#book_demo" variant="primary" class="inline-flex"> Book demo </Button>
+          <Button href="/onboarding#onboarding" variant="secondary" class="inline-flex"> Se hvordan det virker </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOBILE VERSION -->
+  <div class="lg:hidden relative">
+    <!-- Content -->
+    <div class="relative z-10 px-6 pt-16">
+      <!-- Heading -->
+      <div class="leading-tight">
+        <h1 class="text-h1_mobile text-brand">Fuld kontrol.</h1>
+
+        <h1 class="text-h1_mobile text-black mt-2">Ude på felten. Inde på kontoret</h1>
+      </div>
+
+      <!-- Paragraph -->
+      <p class="mt-12 text-h2_mobile text-grey">En simpel digital løsning til servicevirksomheder, der vil skabe overblik, reducere fejl og spare tid i hverdagen.</p>
+
+      <!-- Buttons -->
+      <div class="flex items-center gap-4 mt-12">
+        <Button href="/om#book_demo" variant="primary" class="inline-flex"> Book demo </Button>
+        <Button href="/onboarding#onboarding" variant="secondary" class="inline-flex"> Se hvordan det virker </Button>
+      </div>
+    </div>
+
+    <!-- Image under content -->
+    <div class="mt-10">
+      <img src="/hero_funktioner_1.webp" alt="" aria-hidden="true" class="w-full h-[40vh] object-cover object-center" />
+    </div>
+  </div>
+</section>
