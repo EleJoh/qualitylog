@@ -152,7 +152,7 @@ const currentPath = Astro.url.pathname;
     if (window.innerWidth >= 768 && open) hide();
   });
 
-  // ── Desktop hover ──
+  // Desktop hover
   document.querySelectorAll<HTMLAnchorElement>(".nav-link").forEach((link) => {
     const line = link.querySelector<HTMLElement>(".nav-line");
     const isActive = link.style.color === "" && link.classList.contains("text-brand");
