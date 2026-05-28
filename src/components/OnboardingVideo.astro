@@ -4,18 +4,18 @@ import Button from "../components/Button.astro";
 
 <section id="video" class="bg-bgWhite px-6 lg:px-16 py-16">
   <div class="max-w-screen-xl mx-auto">
-    <div class="bg-bgDarker rounded-3xl p-8 lg:p-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+    <div class="bg-bgDarker rounded-3xl p-8 lg:p-2 lg:px-16 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
       <!-- Left: text + illustration -->
       <div class="reveal-card flex flex-col gap-6">
-        <h2 class="text-h4bold_mobile lg:text-h4bold text-black">
+        <h2 class="text-h4bold_mobile lg:text-h4bold text-black lg:pt-16">
           Mere <span class="text-brand">effektiv</span> hverdag
         </h2>
         <p class="text-p_mobile lg:text-p text-gray max-w-lg">Få et hurtigt overblik over, hvordan QualityLog bruges i praksis. På få minutter kan du se, hvordan opgaver oprettes, udføres og dokumenteres.</p>
-        <div class="flex items-center gap-4 pt-2">
-          <Button href="#book-demo" variant="primary" class="inline-flex"> Book demo </Button>
+        <div class="flex items-center gap-16 pt-2">
+          <Button href="/om#book_demo" variant="primary" class="inline-flex"> Book demo </Button>
         </div>
         <!-- Grafik illustration -->
-        <div class="mt-4 max-w-xs">
+        <div class="max-w-xs lg:ml-48 lg:-translate-y-16">
           <img src="/grafik_big.webp" alt="Kort over QualityLog" />
         </div>
       </div>

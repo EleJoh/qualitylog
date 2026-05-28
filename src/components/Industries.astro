@@ -13,16 +13,22 @@ const industries = [
   <div class="max-w-screen-xl mx-auto">
     <div class="bg-bgDarker rounded-3xl p-8 lg:p-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
       <!-- Left -->
-      <div class="reveal-card flex flex-col gap-6">
-        <h2 class="text-h4bold_mobile lg:text-h4bold text-black">
+      <div class="reveal-card flex flex-col gap-6 lg:gap-16">
+        <h2 class="text-h4bold_mobile lg:text-h4bold text-black lg:-translate-y-4">
           Har din virksomhed <br />brug for <span class="text-brand">QualityLog</span>?
         </h2>
-        <p class="text-p_mobile lg:text-p text-grey">Hvis du kan svare ja til følgende, er vores platform udviklet til netop dine behov:</p>
+
         <img src="/grafik_big.webp" alt="Netværk illustration" class="w-full max-w-xs" />
       </div>
 
       <!-- Right -->
-      <div class="reveal-card data-delay={i * 70} bg-white rounded-2xl p-6 flex flex-col gap-4" data-direction="right">
+      <div class="reveal-card bg-white rounded-2xl p-6 flex flex-col gap-4" data-direction="right">
+        <!-- "Ja, hvis" label -->
+        <p class="text-p_mobile lg:text-p text-black pb-2">
+          <span class="text-brand text-h5_mobile lg:text-h5">Ja,</span> hvis
+        </p>
+
+        <!-- Checkmarks -->
         {
           checks.map((c) => (
             <div class="flex items-start gap-3">
@@ -35,6 +41,8 @@ const industries = [
             </div>
           ))
         }
+
+        <!-- Bottom text -->
         <div class="mt-4 pt-4 border-t border-graphic">
           <p class="text-p_mobile lg:text-p text-grey">…så kan QualityLog skabe bedre overblik og gøre hverdagen lettere.</p>
         </div>
