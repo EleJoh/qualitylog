@@ -22,25 +22,149 @@ import Button from "../components/Button.astro";
 
       <!-- Right: coming soon placeholder -->
       <div class="reveal-card relative bg-bgDark rounded-2xl overflow-hidden aspect-video flex items-center justify-center">
-        <!-- Gradient background -->
-        <div class="absolute inset-0 bg-Darker"></div>
+        <!-- video Wrapper -->
+        <div id="player-wrap" class="max-w-2xl bg-[#0f0f0f] rounded-xl overflow-hidden border border-white/10">
 
-        <!-- Content -->
+          <div class="relative bg-black aspect-video">
+            <video id="vid" class="w-full h-full object-cover" preload="metadata"
+              poster="your-poster.jpg">
+              <source src="/video/video.mp4" type="video/mp4">
+            </video>
+
+            <div id="overlay" class="absolute inset-0 flex items-center justify-center bg-black/25 transition-opacity">
+              <button id="big-play-btn" class="w-16 h-16 flex items-center justify-center rounded-full border-2 border-white/50 bg-white/15 backdrop-blur cursor-pointer">
+                ▶
+              </button>
+            </div>
+          </div>
+
+          <div class="px-3.5 py-2.5 bg-[#1a1a1a] space-y-2.5">
+
+            <div id="progress-wrap" class="h-1 bg-white/15 rounded-full relative cursor-pointer">
+              <div id="progress-fill" class="h-full w-0 bg-white rounded-full"></div>
+            </div>
+
+            <div class="flex items-center gap-2.5">
+              <button id="play-btn" class="text-white text-xl">▶</button>
+              <button id="restart-btn" class="text-white/60 text-lg">⏮</button>
+              <span id="time-display" class="text-xs text-white/55 min-w-[75px]">0:00 / 0:00</span>
+              <div class="flex-1"></div>
+              <button id="mute-btn" class="text-white/70">🔊</button>
+              <input id="vol-slider" type="range" min="0" max="1" step="0.05" value="1"
+                class="w-16 accent-white cursor-pointer">
+              <button id="fs-btn" class="text-white/70">⛶</button>
+            </div>
+
+          </div>
+        </div>
+        </div>
+        <!-- Gradient background -->
+        <!--         <div class="absolute inset-0 bg-Darker"></div>
+
+
         <div class="relative z-10 flex flex-col items-center gap-4 text-center px-6">
-          <!-- Icon -->
+
           <div class="w-16 h-16 rounded-full bg-grey/10 flex items-center justify-center">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
               <path d="M8 5.14v13.72a1 1 0 001.5.86l10-6.86a1 1 0 000-1.72l-10-6.86A1 1 0 008 5.14z" fill="grey" opacity="0.6"></path>
             </svg>
           </div>
 
-          <!-- Text -->
           <div class="flex flex-col gap-1">
             <span class="text-grey text-h5_mobile lg:text-h5">Video kommer snart</span>
             <span class="text-grey text-ps_mobile lg:text-ps">Vi arbejder på det</span>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  const vid = document.getElementById('vid') as HTMLVideoElement;
+  const overlay = document.getElementById('overlay') as HTMLDivElement;
+  const bigPlayBtn = document.getElementById('big-play-btn') as HTMLButtonElement;
+  const playBtn = document.getElementById('play-btn') as HTMLButtonElement;
+  const restartBtn = document.getElementById('restart-btn') as HTMLButtonElement;
+  const progressWrap = document.getElementById('progress-wrap') as HTMLDivElement;
+  const progressFill = document.getElementById('progress-fill') as HTMLDivElement;
+  const timeDisplay = document.getElementById('time-display') as HTMLSpanElement;
+  const muteBtn = document.getElementById('mute-btn') as HTMLButtonElement;
+  const volSlider = document.getElementById('vol-slider') as HTMLInputElement;
+  const fsBtn = document.getElementById('fs-btn') as HTMLButtonElement;
+  const playerWrap = document.getElementById('player-wrap') as HTMLDivElement;
+
+  function fmt(s: number): string {
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60);
+    return m + ':' + String(sec).padStart(2, '0');
+  }
+
+  function togglePlay() {
+    vid.paused ? vid.play() : vid.pause();
+  }
+
+  // Buttons
+  playBtn.addEventListener('click', togglePlay);
+  bigPlayBtn.addEventListener('click', togglePlay);
+
+  restartBtn.addEventListener('click', () => {
+    vid.currentTime = 0;
+    vid.play();
+  });
+
+  muteBtn.addEventListener('click', () => {
+    vid.muted = !vid.muted;
+    muteBtn.textContent = vid.muted ? '🔇' : '🔊';
+  });
+
+  volSlider.addEventListener('input', () => {
+    vid.volume = parseFloat(volSlider.value);
+    vid.muted = vid.volume === 0;
+    muteBtn.textContent = vid.muted ? '🔇' : '🔊';
+  });
+
+  fsBtn.addEventListener('click', () => {
+    if (!document.fullscreenElement) {
+      playerWrap.requestFullscreen();
+      fsBtn.textContent = '✕';
+    } else {
+      document.exitFullscreen();
+      fsBtn.textContent = '⛶';
+    }
+  });
+
+  progressWrap.addEventListener('click', (e: MouseEvent) => {
+    const rect = progressWrap.getBoundingClientRect();
+    const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    vid.currentTime = ratio * vid.duration;
+  });
+
+  // Video events
+  vid.addEventListener('play', () => {
+    playBtn.textContent = '⏸';
+    bigPlayBtn.textContent = '⏸';
+    overlay.style.opacity = '0';
+    overlay.style.pointerEvents = 'none';
+  });
+
+  vid.addEventListener('pause', () => {
+    playBtn.textContent = '▶';
+    bigPlayBtn.textContent = '▶';
+    overlay.style.opacity = '1';
+    overlay.style.pointerEvents = 'auto';
+  });
+
+  vid.addEventListener('timeupdate', () => {
+    if (!vid.duration) return;
+    const pct = (vid.currentTime / vid.duration) * 100;
+    progressFill.style.width = pct + '%';
+    timeDisplay.textContent = fmt(vid.currentTime) + ' / ' + fmt(vid.duration);
+  });
+
+  vid.addEventListener('ended', () => {
+    playBtn.textContent = '▶';
+    overlay.style.opacity = '1';
+    overlay.style.pointerEvents = 'auto';
+  });
+</script>
