@@ -20,43 +20,45 @@ const steps = [
     <!-- Left -->
     <div class="flex flex-col gap-6">
       <p class="reveal-card text-h5timeline_mobile lg:text-h5timeline text-brand uppercase">Alt hvad du behøver</p>
-      <h2 class="reveal-card text-h4bold_mobile lg:text-h4bold text-black">Sådan fungerer QualityLog</h2>
+      <h2 class="reveal-card text-h4bold_mobile lg:text-h4bold text-black">
+        Sådan fungerer <span class="text-brand">QualityLog</span>
 
-      <!-- Active tab card -->
-      <div class="reveal-card bg-bgDarker rounded-2xl p-6 flex flex-col gap-3">
-        <div class="flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-brand inline-block"></span>
-          <p class="text-h5_mobile lg:text-h5 font-semibold text-black">Alt samlet et sted</p>
-        </div>
-        <p class="text-p_mobile lg:text-p text-grey">
-          Fra planlægning til rapportering – alle trin er dokumenteret og tilgængelige i realtid.<br />
-          Det giver dig et klart overblik og bedre kontrol over driften.
-        </p>
-      </div>
-
-      <!-- Illustration placeholder -->
-      <div class="reveal-card mt-4">
-        <img src="/grafik_timeline.webp" alt="Lokation illustration" class="w-full max-w-xs" />
-      </div>
-    </div>
-
-    <!-- Right: Steps -->
-    <div class="flex flex-col gap-24 pt-4 lg:pt-16">
-      {
-        steps.map((step, i) => (
-          <div class="flex items-start gap-5">
-            <div class="reveal-card flex-shrink-0 w-9 h-9 rounded-full bg-brand flex items-center justify-center" data-direction="right" data-delay={i * 140}>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="#FEFEFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </div>
-            <div class="reveal-card flex flex-col gap-1 border-b border-graphic pb-8 w-full last:border-0" data-direction="right" data-delay={i * 140}>
-              <p class="text-h5timeline_mobile lg:text-h5timeline font-bold text-black">{step.title}</p>
-              <p class="text-p_mobile lg:text-p text-grey">{step.description}</p>
-            </div>
+        <!-- Active tab card -->
+        <div class="reveal-card bg-bgDarker rounded-2xl p-6 flex flex-col gap-3">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-brand inline-block"></span>
+            <p class="text-h5_mobile lg:text-h5 font-semibold text-black">Alt samlet et sted</p>
           </div>
-        ))
-      }
+          <p class="text-p_mobile lg:text-p text-grey">
+            Fra planlægning til rapportering – alle trin er dokumenteret og tilgængelige i realtid.<br />
+            Det giver dig et klart overblik og bedre kontrol over driften.
+          </p>
+        </div>
+
+        <!-- Illustration placeholder -->
+        <div class="reveal-card mt-4">
+          <img src="/grafik_timeline.webp" alt="Lokation illustration" class="w-full max-w-xs" />
+        </div>
+      </h2>
+
+      <!-- Right: Steps -->
+      <div class="flex flex-col gap-24 pt-4 lg:pt-16">
+        {
+          steps.map((step, i) => (
+            <div class="flex items-start gap-5">
+              <div class="reveal-card flex-shrink-0 w-9 h-9 rounded-full bg-brand flex items-center justify-center" data-direction="right" data-delay={i * 140}>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="#FEFEFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <div class="reveal-card flex flex-col gap-1 border-b border-graphic pb-8 w-full last:border-0" data-direction="right" data-delay={i * 140}>
+                <p class="text-h5timeline_mobile lg:text-h5timeline font-bold text-black">{step.title}</p>
+                <p class="text-p_mobile lg:text-p text-grey">{step.description}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>
