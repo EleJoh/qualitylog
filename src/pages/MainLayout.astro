@@ -10,7 +10,7 @@ const { title = "QualityLog", description = "Digital kvalitetskontrol til servic
 
 import ScrollReveal from "../components/ScrollReveal.astro";
 
-const siteUrl = "https://qualitylogvideo.netlify.app/"; // ← update to your real domain
+const siteUrl = "https://qualitylogvideo.netlify.app"; // ← update to your real domain
 const pageUrl = canonical ?? siteUrl + Astro.url.pathname;
 const ogImage = image.startsWith("http") ? image : siteUrl + image;
 const fullTitle = title.includes("QualityLog") ? title : `${title} | QualityLog`;
@@ -25,7 +25,7 @@ const fullTitle = title.includes("QualityLog") ? title : `${title} | QualityLog`
 
     <!-- Primary SEO -->
     <title>{fullTitle}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={description || "Digital kvalitetskontrol til servicevirksomheder. Dokumentér fejl, udfør inspektioner og skab overblik direkte fra mobilen."} />
     <link rel="canonical" href={pageUrl} />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Pentia" />
