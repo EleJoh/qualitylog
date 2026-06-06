@@ -8,6 +8,10 @@ interface Props {
 
 const { title = "QualityLog", description = "Digital kvalitetskontrol til servicevirksomheder. Dokumentér fejl, udfør inspektioner og skab overblik direkte fra mobilen.", image = "/og-image.png", canonical } = Astro.props;
 
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/tailwind.css";
+import "animate.css";
 import ScrollReveal from "../components/ScrollReveal.astro";
 
 const siteUrl = "https://qualitylogvideo.netlify.app"; // ← update to your real domain
@@ -81,8 +85,18 @@ const fullTitle = title.includes("QualityLog") ? title : `${title} | QualityLog`
     />
   </head>
 
-  <body class="font-sans bg-white text-black antialiased">
-    <slot />
+  <body class="max-w-8xl mx-auto">
+    <header>
+      <Header />
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer>
+      <Footer />
+    </footer>
     <ScrollReveal />
   </body>
 </html>
